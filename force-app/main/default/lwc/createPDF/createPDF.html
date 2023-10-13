@@ -1,0 +1,63 @@
+<template>
+
+    <div id="content2" >
+    <lightning-card  variant="Narrow"  title="Order Invoice" icon-name="standard:account">
+      <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+    
+      <div class="slds-text-heading_medium slds-text-color_destructive slds-box slds-theme_shade slds-align_absolute-center">Order Details</div>
+  
+  
+    <lightning-record-view-form
+    object-api-name={orderoobjname}
+    record-id={orderid}>
+  
+  <div class="slds-grid slds-align_absolute-center">
+    <div class="slds-col slds-size_1-of-2">
+      <lightning-output-field field-name={nameAccount}> </lightning-output-field>
+      <lightning-output-field field-name={orderStatus}> </lightning-output-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+      <lightning-output-field field-name={orderName}> </lightning-output-field>
+      <lightning-output-field field-name={OrderAmount}> </lightning-output-field>
+    </div>
+  </div>
+  
+  </lightning-record-view-form>
+  
+  
+  <div class="slds-text-heading_medium slds-text-color_destructive slds-box slds-theme_shade slds-align_absolute-center">Invoice Details</div>
+  
+  <lightning-record-view-form
+    object-api-name={objectApiName}
+    record-id={recordId}>
+  
+  <div class="slds-grid slds-align_absolute-center">
+    <div class="slds-col slds-size_1-of-2">
+      <lightning-output-field field-name={invoicename}> </lightning-output-field>
+      <lightning-output-field field-name={order}> </lightning-output-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+      <lightning-output-field field-name={customer}> </lightning-output-field>
+      <lightning-output-field field-name={dueDate}> </lightning-output-field>
+    </div>
+  </div>
+  
+  </lightning-record-view-form>
+  
+  
+  
+  <div class="slds-text-heading_medium slds-text-color_destructive slds-box slds-theme_shade slds-align_absolute-center">Order Line Items</div>
+  
+  <template if:true={orderlineitemsList}>
+      <lightning-datatable data={orderlineitemsList} columns={columns} key-field="Id" hide-checkbox-column="true">
+      </lightning-datatable>
+  </template>
+  
+  <div style="background-color: white; padding: 10px">
+    <lightning-button label="Create PDF" onclick={genpdf}>
+    </lightning-button>
+  </div>
+  
+  </lightning-card>
+  </div>
+  </template>
